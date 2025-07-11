@@ -1,85 +1,39 @@
-::: page
-[]{#init_1.html}
-
-# init {#init .title .level-1}
-
-\
-
 # OPNSense Homelab.
 
 ### OPNsense es un firewall de código abierto basado en FreeBSD, diseñado para ser una solución completa de seguridad de red. Está enfocado en ser seguro, estable y fácil de administrar, con una interfaz web moderna.
-
-### 
 
 ### Fue creado como un fork de pfSense en 2015, con el objetivo de mejorar la transparencia del desarrollo y ofrecer una interfaz más moderna.
 
 ![](images/1-1.png)
 
 ### OPNsense se utiliza como:
-
--   •
-
-    ### • Firewall y router avanzado
-
+-   ### Firewall y router avanzado
 -   ### Sistema de detección y prevención de intrusiones (IDS/IPS)
-
 -   ### VPN concentrator (OpenVPN, IPsec, WireGuard)
-
 -   ### Proxy y filtrado web
-
 -   ### Controlador de ancho de banda
-
 -   ### Sistema de prevención de fugas DNS y bloqueo de publicidad
-
 -   ### Gateway de red para múltiples VLANs
-
 -   ### Captive Portal (útil en redes WiFi públicas o de hoteles)
 
 ### Características clave:
-
--   •
-
-    ### • Interfaz web = Gestión 100% vía navegador, no requiere línea de comandos.
-
+-   ### Interfaz web = Gestión 100% vía navegador, no requiere línea de comandos.
 -   ### Firewall stateful = Usa pf (Packet Filter) para manejar reglas de tráfico.
-
 -   ### VPNs = Soporta OpenVPN, IPsec y WireGuard.
-
 -   ### IDS/IPS = Integra Suricata para detección de amenazas en tiempo real.
-
 -   ### Plugins = Tiene un sistema modular para agregar funcionalidades como Sensei (filtrado avanzado), WireGuard, Zabbix Agent, etc.
-
 -   ### Monitoreo = Gráficos de tráfico, logs en tiempo real, informes del sistema.
-
 -   ### Multi-WAN = Soporta balanceo de carga y failover de múltiples conexiones a Internet.
 
 ![](images/1-2.png)
-:::
-
-::: page
-[]{#init--Instalacion_2.html}
-
-# Instalacion {#instalacion .title .level-2}
-
-\
 
 ## Instalacion.
 
 ### Se puede instalar en hardware real, en máquinas virtuales (como VirtualBox, Proxmox, VMware) o incluso en entornos en la nube (como Azure o AWS).
 
-### 
-
 ### En este caso se usara Virtualbox para el despliegue de la maquina, descargando la iso de la pagina oficial (
-
 ### https://opnsense.org/download/
-
 ### ) y empezar con la instalacion.
-
-### 
-
-### 
-
-### 
 
 ### Dentro de virtualbox se empezo a desplegar la maquina usando la imagen oficial de opnsense, y aclarando que el tipo de sistema es BSD (ya que en este sistema esta basado opnsense) y dandole una version de 64 bits.
 
@@ -87,22 +41,9 @@
 
 ### En la maquina se usaron los recursos minimos ya que solo se usara para fines de laboratorio, estas pruebas fueron de alto rendimiento, y tampoco interactuaron muchos equipos.
 
-### 
-
 ### En caso de crear una red amplia de laboratorio se recomienda usar los parametros de configuracion recomendados por opnsense
 
-### 
-
-### 
-
-### 
-
 ### Requisitos mínimos:
-
-### 
-
-### 
-
   Requisitos   Detalles
   ------------ -----------
   CPU          x86_64
@@ -113,12 +54,6 @@
 ![](images/2-2.png)
 
 ### Luego de crear la maquina hay que tener en cuenta el apartado red. Los adaptadores de red deben ser configurados de dos maneras ya que opnsense manejara dos interfaces de red, la interfaz conectada a la maquina fisica (el host que esta corriendo virtualbox) con el cual tendra acceso a internet, y el segundo adaptador estara conectado a las maquinas que haran las pruebas (El resto de las maquinas que se conecten a opnsense).
-
-### 
-
-### 
-
-### 
 
 ### El adaptador 1 usara un
 
