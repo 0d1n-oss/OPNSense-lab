@@ -30,54 +30,28 @@
 ## Instalacion.
 
 ### Se puede instalar en hardware real, en máquinas virtuales (como VirtualBox, Proxmox, VMware) o incluso en entornos en la nube (como Azure o AWS).
-
-### En este caso se usara Virtualbox para el despliegue de la maquina, descargando la iso de la pagina oficial (
-### https://opnsense.org/download/
-### ) y empezar con la instalacion.
-
+### En este caso se usara Virtualbox para el despliegue de la maquina, descargando la iso de la pagina oficial (https://opnsense.org/download/) y empezar con la instalacion.
 ### Dentro de virtualbox se empezo a desplegar la maquina usando la imagen oficial de opnsense, y aclarando que el tipo de sistema es BSD (ya que en este sistema esta basado opnsense) y dandole una version de 64 bits.
 
 ![](images/2-1.png)
 
 ### En la maquina se usaron los recursos minimos ya que solo se usara para fines de laboratorio, estas pruebas fueron de alto rendimiento, y tampoco interactuaron muchos equipos.
 
-### En caso de crear una red amplia de laboratorio se recomienda usar los parametros de configuracion recomendados por opnsense
-
-### Requisitos mínimos:
-  Requisitos   Detalles
-  ------------ -----------
-  CPU          x86_64
-  RAM          1 GB
-  DISCO        4 GB
-  RED          LAN y WAN
+### En caso de crear una red amplia de laboratorio se recomienda usar los parametros de configuracion recomendados.
 
 ![](images/2-2.png)
 
 ### Luego de crear la maquina hay que tener en cuenta el apartado red. Los adaptadores de red deben ser configurados de dos maneras ya que opnsense manejara dos interfaces de red, la interfaz conectada a la maquina fisica (el host que esta corriendo virtualbox) con el cual tendra acceso a internet, y el segundo adaptador estara conectado a las maquinas que haran las pruebas (El resto de las maquinas que se conecten a opnsense).
 
-### El adaptador 1 usara un
-
-### NAT
-
-### , con el tipo de adaptador por defecto, nada muy rebuscado.
+### El adaptador 1 usara un NAT, con el tipo de adaptador por defecto, nada muy rebuscado.
 
 ![](images/2-3.png)
 
-### En el segundo adaptador se especificara un
-
-### Internal Network
-
-### y usando el nombre
-
-### intnet
-
-### (mas facil de recordar).
+### En el segundo adaptador se especificara un Internal Network y usando el nombre intnet (mas facil de recordar).
 
 ![](images/2-4.png)
 
 ### Luego de iniciar la maquina esta ofrece la alternativa de instalar el sistema en un disco o seguir desde el instalador, esta desicion esta a criterio de quien la despliegue, ya que no afecta la funcionalidad.
-
-### 
 
 ### Ya dentro de la maquina se tuvieron que configurar las interfaces, luego de seleccionar la opcion 1 en el menu para asignar las interfaces, es importante que opnsense reconosca los adaptadores de red correctamente.
 
@@ -112,72 +86,26 @@
 ### Ya con la maquina configurada se recomendaria comprobar la conectividad con algun host web usando ping.
 
 ![](images/2-7.png)
-:::
 
-::: page
-[]{#Pruebas_4.html}
-
-# Pruebas {#pruebas .title .level-1}
-
-\
-:::
-
-::: page
-[]{#Pruebas--Test_1_8.html}
-
-# Test 1 {#test-1 .title .level-2}
-
-\
+# Pruebas.
 
 ## Captive portal.
 
-### El
-
-### Captive Portal
-
-### es una funcionalidad que
-
-### bloquea el acceso a Internet o a la red local hasta que el usuario se autentique
-
-### a través de una página web.
-
-### 
+### El Captive Portal es una funcionalidad que bloquea el acceso a Internet o a la red local hasta que el usuario se autentique a través de una página web.
 
 ### El portal permite regular que usuarios acceden a la red, registrando quien se conecta, pudiendo expulsar usuarios indeseados, y pudiendo administrar los permisos de acceso a las redes, contando con un factor de seguridad para filtrar el acceso a una red privada o publica.
 
 ### 
 
-### 
-
-### 
-
-### 
-
 ### Objetivo
-
-### 
-
 ### Crear un Captive Portal en OPNsense que:
-
 -   ### Intercepte conexiones desde la red LAN
-
 -   ### Muestre una página de login
-
 -   ### Permita navegar solo después de autenticarse
 
 ### 
 
-### 
-
-### 
-
-### 
-
 ### Test #1
-
-### 
-
-### 
 
 ### 
 
@@ -224,14 +152,6 @@
 ### Pudiendo acceder a internet luego de proporcionar las credenciales validas.
 
 ![](images/8-9.png)luego
-:::
-
-::: page
-[]{#Pruebas--test_2_9.html}
-
-# test 2 {#test-2-1 .title .level-2}
-
-\
 
 ## Block Firewall.
 
@@ -247,19 +167,11 @@
 
 ### 
 
-### 
-
-### 
-
-### 
-
 ### Test #1
 
 ### 
 
-### En el area de
-
-### Unbound DNS
+### En el area de Unbound DNS
 
 ### se accedio a blocklist para configurar algunos dominios, el mantener este activado los dominios se bloquean desde el navegador.
 
@@ -273,15 +185,7 @@
 
 ### 
 
-### Accediendo a el area de
-
-### Rules
-
-### de
-
-### Firewall
-
-### se creo una nueva regla, una regla especifica para bloquear.
+### Accediendo a el area de Rules de Firewall se creo una nueva regla, una regla especifica para bloquear.
 
 ### 
 
@@ -289,23 +193,14 @@
 
 ![](images/9-3.png)
 
-### La regla tiene algunos parametros especificos, agregando el protocolo
-
-### TCP
-
-### para bloquear y asignando tanto la direccion como la version de IP (y obviamente la interfaz) para crear la regla de firewall.
+### La regla tiene algunos parametros especificos, agregando el protocolo TCP para bloquear y asignando tanto la direccion como la version de IP (y obviamente la interfaz) para crear la regla de firewall.
 
 ![](images/9-4.png)
 
 ### Ya aplicando la regla al firewall se muestra que el escaneo de nmap muestra el puerto como filtered, no otorgando un acceso limpio a este debido a la nueva regla de bloqueo.
-
-### 
-
-### 
 
 ### Nota:
 
 ### las reglas se leen de arriba hacia abajo, las nuevas reglas deben ser colocadas arriba de las anteriores para evitar problemas de ejecucion.
 
 ![](images/9-5.png)
-:::
