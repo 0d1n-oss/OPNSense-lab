@@ -59,8 +59,6 @@
 
 ## Configuracion de las interfaces:
 
-::: codebox
-    #LAN (em1)
 
     IP address: 192.168.1.1
     Subnet mask: 24
@@ -68,7 +66,6 @@
     Enable DHCP on LAN: Yes
     Start: 192.168.1.100
     End: 192.168.1.200
-:::
 
 ### En la interfaz WAN (em0) no se haran muchas configuraciones, pero si se agregara una ruta para que envie el trafico a la maquina host y obtenga acceso a internet.
 
