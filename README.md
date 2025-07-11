@@ -69,14 +69,13 @@
 
 ### En la interfaz WAN (em0) no se haran muchas configuraciones, pero si se agregara una ruta para que envie el trafico a la maquina host y obtenga acceso a internet.
 
-::: codebox
-    #ver las interfaces 
-    netstat -rn
 
+    #ver las interfaces con netstat
+    netstat -rn
     #borrar la interfaz por defecto y agregar la de la maquina fisica
     route delete default
     route add default 10.0.2.2
-:::
+
 
 ![](images/2-6.png)
 
